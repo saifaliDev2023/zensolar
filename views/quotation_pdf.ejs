@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+
+<!-- Mirrored from ivonne-seven.vercel.app/medical-invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 30 May 2024 08:42:23 GMT -->
+<!-- Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="ThemeMarch">
+    <!-- Site Title -->
+    <!-- <title>Medical Invoice</title> -->
+    <link rel="stylesheet" href="http://localhost:2828/css/invoice-style.css">
+</head>
+
+<!-- style="width: 49.8rem; height: 70.5rem;" -->
+
+<body>
+    <div class="cs-container">
+        <div class="cs-invoice cs-style1" id="firstPage" style="margin-bottom: 20px;">
+            <div class="cs-invoice_in" id="download_section">
+                <div class="cs-invoice_head cs-type1 cs-mb25">
+                    <div class="cs-invoice_left">
+                        <p style="margin-bottom: 0px;"><b class="cs-primary_color">Contact No:</b> +91 9421-601260</p>
+                        <p style="margin-bottom: 0px;"><b class="cs-primary_color">Email:</b>
+                            zensolar.enterprises@gmail.com</p>
+                        <p style="margin-bottom: 0px;"><b class="cs-primary_color">Address:</b> 77, Shaniwar Peth, Near
+                            Kamtikar Medical, Painter Chowk, Solapur.</p>
+
+                        <br>
+                        <p><b class="cs-primary_color cs-semi_bold">Proposal No:</b> #ZS2405001</p>
+
+                        <!-- <p class="cs-invoice_number cs-primary_color cs-mb0 cs-f16">
+                            <b class="cs-primary_color">Address:</b> Telangi Paccha peth Solapur
+                        </p> -->
+
+                    </div>
+                    <div class="cs-invoice_right cs-text_right">
+                        <div class="cs-logo cs-mb5"><img src="http://localhost:2828/img/zensolar-logo.jpg" alt="Logo">
+                        </div>
+                        <br>
+                        <p><b class="cs-primary_color cs-semi_bold">Date:</b>
+                            <%= date %>
+                        </p>
+                    </div>
+                </div>
+                <div class="cs-heading cs-style1 cs-f18 cs-primary_color cs-mb25 cs-semi_bold">Project: <%= units %>kw -
+                        1Phase,
+                        Solar on grids Setup. </div>
+                <ul class="cs-grid_row cs-col_3 cs-mb5">
+                    <li>
+                        <p class="cs-mb20"><b class="cs-primary_color">Client Name:</b> <br><span
+                                class="cs-primary_color">
+                                <%= name %>
+                            </span></p>
+                        <p class="cs-mb20"><b class="cs-primary_color">Structure:</b> <br><span
+                                class="cs-primary_color">
+                                <%= structure %>
+                            </span></p>
+                        <!-- <p class="cs-mb20"><b class="cs-primary_color">Insurence Billed:</b> <br><span
+                                class="cs-primary_color">WPS</span></p> -->
+                    </li>
+                    <li>
+                        <p class="cs-mb20"><b class="cs-primary_color">Phone Number:</b> <br><span
+                                class="cs-primary_color">+91 <%= phone_number %></span></p>
+                        <p class="cs-mb20"><b class="cs-primary_color">Preparation Date:</b> <br><span
+                                class="cs-primary_color">
+                                <%= date %>
+                            </span></p>
+                        <!-- <p class="cs-mb20"><b class="cs-primary_color">Due Date:</b> <br><span
+                                class="cs-primary_color">25 Feb 2022</span></p> -->
+                    </li>
+                    <li>
+                        <p class="cs-mb20"><b class="cs-primary_color">Address:</b> <br><span
+                                class="cs-primary_color"></span>
+                            <%= address %>
+                        </p>
+                    </li>
+                </ul>
+                <div class="cs-table cs-style2">
+                    <div class="cs-round_border">
+                        <div class="cs-table_responsive">
+                            <table>
+                                <thead>
+                                    <tr class="cs-focus_bg">
+                                        <th class="cs-width_8 cs-semi_bold cs-primary_color cs-right-border">Item
+                                            Description</th>
+                                        <th class="cs-width_2 cs-semi_bold cs-primary_color cs-right-border">Rate/PKw
+                                        </th>
+                                        <th class="cs-width_2 cs-semi_bold cs-primary_color cs-text_right">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="cs-width_8 cs-right-border">
+                                            <div class="item-container">
+                                                <div>Supply of Solar PV module 5busbar</div>
+                                                <div>Supply of Solar Inverter.</div>
+                                                <div>Supply of Array junction Boxes, DCDB with MOV/SPD etc.</div>
+                                                <div>Supply of AC Distribution board with SPD etc.</div>
+                                                <div>Supply of copper lightening arrester & GI earthing system</div>
+                                                <div>Transportation</div>
+                                        </td>
+                                        <td class="cs-width_2 cs-right-border">₹<%= basePrice %>
+                                        </td>
+                                        <td class="cs-width_2 cs-text_right cs-primary_color">₹<%= baseAmount %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cs-width_8 cs-right-border">GST</td>
+                                        <td class="cs-width_2 cs-right-border">13.8 %</td>
+                                        <td class="cs-width_2 cs-text_right cs-primary_color">₹<%= gstAmount %>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cs-width_8"><b>Payable Amount</b></td>
+                                        <td class="cs-width_2 cs-right-border"></td>
+                                        <td class="cs-width_2 cs-text_right cs-primary_color"><b>₹<%= totalAmount %></b>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="cs-table cs-style2">
+                    <div class="cs-table_responsive">
+                        <table>
+                            <tbody>
+                                <tr class="cs-table_baseline">
+                                    <td class="cs-width_5">
+                                        <b class="cs-primary_color">Pay By</b><br />
+                                        Cash, UPI, NetBanking, Credit Card <br />Amount: ₹ <%= totalAmount %> - refund:
+                                            ₹ <%= subsidyAmount %>
+                                    </td>
+                                    <td class="cs-width_5 cs-text_right">
+                                        <p class="cs-mb5 cs-mb5 cs-f15 cs-primary_color cs-semi_bold">Subsidy:</p>
+                                        <p class="cs-primary_color cs-bold cs-f16 cs-m0">After Subsidy Amount:</p>
+                                    </td>
+                                    <td class="cs-width_2 cs-text_rightcs-f16">
+                                        <p class="cs-mb5 cs-mb5 cs-text_right cs-f15 cs-primary_color cs-semi_bold">
+                                            <%= subsidyAmount %>
+                                        </p>
+                                        <p class="cs-primary_color cs-bold cs-f16 cs-m0 cs-text_right">₹<%=
+                                                aftSubsidyAmount %>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="cs-note">
+                    <div class="cs-note_left">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                            <path
+                                d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z"
+                                fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
+                            <path d="M256 56v120a32 32 0 0032 32h120M176 288h160M176 368h160" fill="none"
+                                stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="32" />
+                        </svg>
+                    </div>
+                    <div class="cs-note_right">
+                        <p class="cs-mb0"><b class="cs-primary_color cs-bold">Note:</b></p>
+                        <p class="cs-m0">₹<%= subsidyAmount %> subsidy amount will be credited to customer's bank
+                                account in 90 days.
+                        </p>
+                    </div>
+                </div>
+                <!-- .cs-note -->
+            </div>
+        </div>
+        <div style='page-break-before: always;'></div>
+        <div class="cs-invoice cs-style1" id="secondPage" style="margin-bottom: 20px;">
+            <div class="cs-invoice_in" id="download_section">
+                <div class="cs-invoice_head cs-type1 cs-mb25">
+                    <div class="cs-invoice_left">
+                        <!-- <h3>Zensolar</h3> -->
+                        <p style="margin-bottom: 0px;"><b class="cs-primary_color">Contact No:</b> +91 9421-601260</p>
+                        <p style="margin-bottom: 0px;"><b class="cs-primary_color">Email:</b>
+                            zensolar.enterprises@gmail.com</p>
+                        <p style="margin-bottom: 0px;"><b class="cs-primary_color">Address:</b> 77, Shaniwar Peth, Near
+                            Kamtikar Medical, Painter Chowk, Solapur.</p>
+
+                        <br>
+                        <p><b class="cs-primary_color cs-semi_bold">Proposal No:</b> #ZS2405001</p>
+
+                        <!-- <p class="cs-invoice_number cs-primary_color cs-mb0 cs-f16">
+                            <b class="cs-primary_color">Address:</b> Telangi Paccha peth Solapur
+                        </p> -->
+
+                    </div>
+                    <div class="cs-invoice_right cs-text_right">
+                        <div class="cs-logo cs-mb5"><img src="http://localhost:2828/img/zensolar-logo.jpg" alt="Logo">
+                        </div>
+                        <br>
+                        <p><b class="cs-primary_color cs-semi_bold">Date:</b>
+                            <%= date %>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="cs-mt20">
+                    <p class="cs-mb20">
+                        <b class="cs-primary_color">
+                            <h5 style="margin-bottom: 20px;">Terms & conditions:</h5>
+                        </b>
+                    <div id="content-paragraph">
+                        <b class="cs-primary_color" style="font-size: 16px;">Payment Terms:</b><br>
+                        <div style="text-align: justify;">
+                            <span class="cs-primary_color">
+                                <ul>
+                                    <li>60% advance along with work order</li>
+                                    <li>30% advance after dispatch of Material</li>
+                                    <li>10% after Installation</li>
+                                </ul>
+                                <span>We look forward to your response and the opportunity to work with you!</span>
+                                <span>Kindly get in touch with us at <b>zensolar.enterprises@gmail.com</b> or Contact us
+                                    <b>+91 9421-601260</b> for more information.</span>
+                            </span>
+                        </div>
+                    </div>
+                    </p>
+                </div>
+
+                <div class="cs-mt20">
+                    <p class="cs-mb20">
+                        <b class="cs-primary_color">
+                            <h5 style="margin-bottom: 20px;">Specification:</h5>
+                        </b>
+
+                    <div class="cs-table cs-style2">
+                        <div>
+                            <div class="cs-table_responsive">
+                                <table class="cs-allside-border">
+                                    <thead>
+                                        <tr class="cs-focus_bg">
+                                            <th class="cs-width_4 cs-semi_bold cs-primary_color cs-text_center">Parts /
+                                                Material</th>
+                                            <th class="cs-width_4 cs-semi_bold cs-primary_color cs-text_center">Make
+                                            </th>
+                                            <th class="cs-width_4 cs-semi_bold cs-primary_color cs-text_center">
+                                                Specification
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="cs-width_4 cs-primary_color">
+                                                Solar Modules
+                                            </td>
+                                            <td class="cs-width_4 cs-primary_color">APN Solar/Contendre or Similar</td>
+                                            <td class="cs-width_4 cs-primary_color">MNRE Approved with (ALMM) of Solar
+                                                Photovoltaic Modules</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cs-width_4 cs-primary_color">Solar Inverter</td>
+                                            <td class="cs-width_4 cs-primary_color">Growatt/ Ksolare or Similar</td>
+                                            <td class="cs-width_4 cs-primary_color">Efficient Power Generation.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cs-width_4 cs-primary_color">DC Wire/ AC Wire</td>
+                                            <td class="cs-width_4 cs-primary_color">Polycab/ Finolex or Reputed</td>
+                                            <td class="cs-width_4 cs-primary_color">Long life & Stability</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cs-width_4 cs-primary_color">Structure 1:5FT * 3 FT</td>
+                                            <td class="cs-width_4 cs-primary_color">HOT Galvanized GI 1:5FT * 3 FT</td>
+                                            <td class="cs-width_4 cs-primary_color">Long life & Stability</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cs-width_4 cs-primary_color">Lightening Arrester,Earthing Pit
+                                            </td>
+                                            <td class="cs-width_4 cs-primary_color">As per MNRE Standard</td>
+                                            <td class="cs-width_4 cs-primary_color">As per operator recommended</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="cs-width_4 cs-primary_color">BOS,PVC Pipe</td>
+                                            <td class="cs-width_4 cs-primary_color">As per MNRE Standard</td>
+                                            <td class="cs-width_4 cs-primary_color">As per site requirement</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cs-mt20" id="content-paragraph">
+                        <b class="cs-primary_color" style="font-size: 16px;">Material Reports:</b><br>
+                        <div style="text-align: justify;">
+                            <span class="cs-primary_color">
+                                <span>Panels Data Sheet</span><br>
+                                <span>Inverter Test Certificate</span><br><br>
+
+                                <span>All the material is MNRE approved with complete guidelines and completely
+                                    authorizes material which is required for proper generation of units.</span>
+
+                            </span>
+                        </div>
+                    </div>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <div style='page-break-before: always;'></div>
+        <div class="cs-invoice cs-style1" id="tharedPage" style="margin-bottom: 20px;">
+            <div class="cs-invoice_in" id="download_section">
+                <div class="cs-invoice_head cs-type1 cs-mb25">
+                    <div class="cs-invoice_left">
+                        <!-- <h3>Zensolar</h3> -->
+                        <p style="margin-bottom: 0px;"><b class="cs-primary_color">Contact No:</b> +91 9421-601260</p>
+                        <p style="margin-bottom: 0px;"><b class="cs-primary_color">Email:</b>
+                            zensolar.enterprises@gmail.com</p>
+                        <p style="margin-bottom: 0px;"><b class="cs-primary_color">Address:</b> 77, Shaniwar Peth, Near
+                            Kamtikar Medical, Painter Chowk, Solapur.</p>
+
+                        <br>
+                        <p><b class="cs-primary_color cs-semi_bold">Proposal No:</b> #ZS2405001</p>
+
+                        <!-- <p class="cs-invoice_number cs-primary_color cs-mb0 cs-f16">
+                            <b class="cs-primary_color">Address:</b> Telangi Paccha peth Solapur
+                        </p> -->
+
+                    </div>
+                    <div class="cs-invoice_right cs-text_right">
+                        <div class="cs-logo cs-mb5"><img src="http://localhost:2828/img/zensolar-logo.jpg" alt="Logo">
+                        </div>
+                        <br>
+                        <p><b class="cs-primary_color cs-semi_bold">Date:</b>
+                            <%= date %>
+                        </p>
+                    </div>
+                </div>
+                <!-- <div class="cs-invoice_head cs-mb10">
+                    <div class="cs-invoice_left">
+                        <p><b class="cs-primary_color cs-semi_bold">Proposal No:</b> #ZS2405001</p>
+
+                        
+                        <b class="cs-primary_color">To,<br>Saif ali Shaikh</b>
+                        <p>
+                            2 A, Telangi Paccha Peth, <br />
+                            Solapur, 413005 <br />
+                            saifali.email@email.com <br />
+                            +91 9588-601260
+                        </p>
+
+                    </div>
+                    <div class="cs-invoice_right cs-text_right">
+                        <p><b class="cs-primary_color cs-semi_bold">Date:</b> 25 Feb 2022</p>
+                        <b class="cs-primary_color">IVONNE HOSPITAL</b>
+                        <p><b class="cs-primary_color cs-semi_bold">Project:</b><br>3Kw Solar On Grid</p>
+                    </div>
+                </div> -->
+                <!-- <div class="cs-heading cs-style1 cs-f18 cs-primary_color cs-mb25 cs-semi_bold">Project: 3kw - 1Phase,
+                    Solar on grids Setup. </div> -->
+
+                <div class="cs-mt20">
+                    <p class="cs-mb20">
+                        <b class="cs-primary_color">
+                            <h5 style="margin-bottom: 20px;">Warrantee Details:</h5>
+                        </b>
+                    <div id="content-paragraph">
+                        <b class="cs-primary_color" style="font-size: 16px;">Panels:</b><br>
+                        <div style="text-align: justify;">
+                            <span class="cs-primary_color">The solar modules are warranted by
+                                the solar panel manufacturer
+                                for a period of 25 years. Beginning on the Warranty Start Date and terminating
+                                on that date, which is one hundred and twenty (120) months thereafter, the warranty of
+                                modules and their respective DC connectors and cables, if
+                                any, shall be free from material defects in design, materials, and workmanship that
+                                affect
+                                the performance of the module and shall be covered
+                                under service warranty.
+                                </br> </br>
+                                <span>(“Limited Product Warranty”). Material defects shall not include normal wear and
+                                    tear.</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="content-paragraph" style="margin-top: 20px;">
+                        <b class="cs-primary_color" style="font-size: 16px;">Performance warranty for the
+                            system:</b><br>
+                        <div style="text-align: justify;">
+                            <span class="cs-primary_color">80% efficiency up to 25 years
+                            </span>
+                        </div>
+                    </div>
+                    <div id="content-paragraph" style="margin-top: 20px;">
+                        <b class="cs-primary_color" style="font-size: 16px;">Inverter:</b><br>
+                        <div style="text-align: justify;">
+                            <span class="cs-primary_color">Inverter comes under complete 5 years of replacement warranty
+                                addition warranty can be add by Paying addition charges for the system.
+                            </span>
+                        </div>
+                    </div>
+                    <div id="content-paragraph" style="margin-top: 20px;">
+                        <b class="cs-primary_color" style="font-size: 16px;">Balance of the Systems::</b><br>
+                        <div style="text-align: justify;">
+                            <span class="cs-primary_color">A standard 12-month warranty against manufacturing defects is
+                                provided. After the warranty period, this will ensure the supply of spares for the
+                                system at actual cost.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="cs-note">
+                        <div class="cs-note_left">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                                <path
+                                    d="M416 221.25V416a48 48 0 01-48 48H144a48 48 0 01-48-48V96a48 48 0 0148-48h98.75a32 32 0 0122.62 9.37l141.26 141.26a32 32 0 019.37 22.62z"
+                                    fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32" />
+                                <path d="M256 56v120a32 32 0 0032 32h120M176 288h160M176 368h160" fill="none"
+                                    stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="32" />
+                            </svg>
+                        </div>
+                        <div class="cs-note_right">
+                            <p class="cs-mb0"><b class="cs-primary_color cs-bold">Note:</b></p>
+                            <p class="cs-m0">
+                            <ul>
+                                <li>All warranty will start from the date of delivery</li>
+                                <li>Test Report will be provided after completion</li>
+                                <li>Performance report will be provided after 7 day of live working Site</li>
+                            </ul>
+                            </p>
+                        </div>
+                    </div>
+                    </p>
+                </div>
+
+                <div class="cs-mt20">
+                    <b class="cs-primary_color" style="font-size: 16px;">Thanks & Regards,</b><br>
+                    <span><b>Zensolar, Solapur</b></span>
+
+                </div>
+
+                <div class="cs-mt20 cs-text_center">
+                    <span>Save Electricity Bill | Save Environment | Go Green |Switch to Solar | Help Mother
+                        Nature</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="js/invoice_js/jquery.min.js"></script>
+    <script src="js/invoice_js/jspdf.min.js"></script>
+    <script src="js/invoice_js/html2canvas.min.js"></script>
+    <script src="js/invoice_js/main.js"></script>
+</body>
+
+</html>

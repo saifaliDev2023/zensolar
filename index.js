@@ -7,7 +7,6 @@ const nodemailer = require("nodemailer");
 
 const http = require("http");
 const fs = require("fs");
-const { log } = require("console");
 
 app.set("view engine", "ejs");
 
@@ -24,7 +23,7 @@ app.get("/quotation", async (req, res) => {
 });
 
 app.post("/quotation", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 
   let {
     name,
@@ -70,9 +69,12 @@ app.post("/quotation", async (req, res) => {
   let date = `${day} ${month} ${year}`;
   let filename;
 
+  let invoiceNumber = await generateRandomNumber();
+
   let quotationData = {
     date,
     units,
+    invoiceNumber,
     name,
     phone_number,
     address,
@@ -100,10 +102,10 @@ app.post("/quotation", async (req, res) => {
 
     await page.setContent(htmlContent);
 
-    filename = `${name}-${units}Kw`;
+    filename = `${name}-${units}Kw.pdf`;
 
     await page.pdf({
-      path: `./downloads/${filename}.pdf`,
+      path: `./downloads/${filename}`,
     });
 
     await browser.close();
@@ -113,11 +115,11 @@ app.post("/quotation", async (req, res) => {
 
   try {
     const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email",
+      host: "smtp.gmail.com",
       port: 587,
       auth: {
-        user: "ilene16@ethereal.email",
-        pass: "FUNkKqRwV7XPNyuqxY",
+        user: "zensolar.enterprises@gmail.com",
+        pass: "tqig gkhk lwea rxve",
       },
     });
 
@@ -133,20 +135,22 @@ app.post("/quotation", async (req, res) => {
       Enquiry for ${units}Kw
 
       Name: ${name},
-      units: ${units},
+      units: ${units}Kw,
       phone_number: ${phone_number},
       address: ${address},
       city: ${city},
       pincode: ${pincode},
       structure: ${structure},
 
-      Project Amount: ${basePrice} X ${units} = ${baseAmount}
-      Total Amount: ${totalAmount}
-
-      Subsidy: ${subsidyAmount}
-      GSTAmount: ${gstAmount}  
-
-      After Subsidy Amount: ${aftSubsidyAmount}
+      Project Amount: ₹ ${quotationData.basePrice} X ${units} = ₹ ${quotationData.baseAmount}
+      +
+      GSTAmount: ₹ ${quotationData.gstAmount}
+      ===============================
+      Total Amount: ₹ ${quotationData.totalAmount}
+      -
+      Subsidy: ₹ ${quotationData.subsidyAmount}
+      ===============================
+      After Subsidy Amount: ₹ ${quotationData.aftSubsidyAmount}
 
       Thanks and Regards,
       ${name}
@@ -164,13 +168,61 @@ app.post("/quotation", async (req, res) => {
     console.error("error:", error);
   }
 
-  res.render("home");
+  downloadPdf(req, res, filename);
+
+  // res.redirect("/");
+
 });
+
+function generateRandomNumber() {
+  const prefix = "ZS";
+  const year = new Date().getFullYear().toString().slice(2); // "24" for the year 2024
+  const month = ("0" + (new Date().getMonth() + 1)).slice(-2); // "05" for May
+
+  // Generate a random number between 0 and 999
+  const randomNum = Math.floor(Math.random() * 1000);
+
+  // Pad the random number with leading zeros to make it a 3-digit number
+  const randomNumStr = ("000" + randomNum).slice(-3);
+
+  // Construct the final string
+  const finalStr = `${prefix}${year}${month}${randomNumStr}`;
+
+  return finalStr;
+}
+
+function downloadPdf(req, res, filename) {
+
+  const filePath = path.join(__dirname, 'downloads', `${filename}`);
+
+  try {
+    if (!fs.existsSync(filePath)) {
+      throw new Error('PDF file not found');
+    }
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.download(filePath, (err) => {
+      if (err) {
+        console.log("error");
+      } else {
+        console.log("response");
+      }
+    });
+    setTimeout(() => {
+      fs.unlinkSync(filePath);
+    }, 2000);
+  } catch (error) {
+    console.error('Error downloading PDF:', error);
+    res.status(500).send('Error downloading file'); // Handle errors appropriately
+  }
+}
 
 app.get("/quotation-pdf", (req, res) => {
   res.render("quotation_pdf");
 });
 
-app.listen(2828, () =>
-  console.log("server listening on http://localhost:2828")
+let PORT = process.env.PORT || 2828;
+
+app.listen(PORT, () =>
+  console.log("server listening on ", PORT)
 );

@@ -1368,6 +1368,16 @@ ul {
   flex: 1;
 }
 
+.fxt-socials .fxt-whatsapp a {
+  background-color: #25d366;
+  border-color: #25d366;
+}
+
+.fxt-socials .fxt-instagram a {
+  background-color: #b6026e !important;
+  border-color: #b6026e !important;
+}
+
 .fxt-template-layout2 ul.fxt-socials li.fxt-facebook a {
   background-color: #3b5998;
 }

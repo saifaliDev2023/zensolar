@@ -14,8 +14,11 @@ app.use("/static", express.static("public"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
+let baseUrl = "http://zensolar.syscloudtech.com";
+
 app.get("/", async (req, res) => {
-  res.render("home");
+  let priceListUrl = `${baseUrl}/price-list.pdf`;
+  res.render("home", { priceListUrl });
 });
 
 app.get("/quotation", async (req, res) => {
@@ -71,7 +74,13 @@ app.post("/quotation", async (req, res) => {
 
   let invoiceNumber = await generateRandomNumber();
 
+  let quotationUrls = {
+    cssUrl : `${baseUrl}/css/invoice-style.css`,
+    logoUrl : `${baseUrl}/img/zensolar-logo.jpg`,
+  }
+
   let quotationData = {
+    quotationUrls,
     date,
     units,
     invoiceNumber,
@@ -126,7 +135,7 @@ app.post("/quotation", async (req, res) => {
     var mailOptions = {
       from: "zensolar.enterprises@gmail.com",
       to: "zensolar.enterprises@gmail.com",
-      subject: `Enquiry ${units}Kw - ${filename} `,
+      subject: `Enquiry ${units}Kw - ${name} `,
       text: `
       Date: ${date},
 

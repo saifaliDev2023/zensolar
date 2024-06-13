@@ -179,7 +179,7 @@ app.post("/quotation", async (req, res) => {
 
   downloadPdf(req, res, filename);
 
-  // res.redirect("/");
+  // res.redirect('/');
 
 });
 
@@ -204,26 +204,17 @@ function downloadPdf(req, res, filename) {
 
   const filePath = path.join(__dirname, 'downloads', `${filename}`);
 
-  try {
-    if (!fs.existsSync(filePath)) {
-      throw new Error('PDF file not found');
-    }
+  const file = fs.createReadStream(filePath);
 
-    res.setHeader('Content-Type', 'application/pdf');
-    res.download(filePath, (err) => {
-      if (err) {
-        console.log("error");
-      } else {
-        console.log("response");
-      }
-    });
-    setTimeout(() => {
-      fs.unlinkSync(filePath);
-    }, 2000);
-  } catch (error) {
-    console.error('Error downloading PDF:', error);
-    res.status(500).send('Error downloading file'); // Handle errors appropriately
-  }
+  res.setHeader('Content-Type', 'application/pdf'); // Set content type based on file
+  res.setHeader('Content-Disposition', 'attachment; filename=abcd.pdf');
+  
+  file.pipe(res);
+
+  setTimeout(()=>{
+    fs.unlink(filePath);
+  }, 2000);
+
 }
 
 app.get("/quotation-pdf", (req, res) => {

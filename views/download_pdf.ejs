@@ -1,0 +1,142 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+
+<!-- Mirrored from affixtheme.com/html/xmee/demo/login-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 May 2024 10:46:35 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Zensolar | </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.svg">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="css/fontawesome-all.min.css">
+    <!-- Flaticon CSS -->
+    <link rel="stylesheet" href="font/flaticon.css">
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div id="preloader" class="preloader">
+        <div class='inner'>
+            <div class='line1'></div>
+            <div class='line2'></div>
+            <div class='line3'></div>
+        </div>
+    </div>
+    <div id="wrapper" class="wrapper">
+        <div class="fxt-template-animation fxt-template-layout5">
+            <div class="fxt-bg-img fxt-none-767" data-bg-image="img/figure/bg5-2.jpg">
+                <div class="fxt-intro">
+                    <div class="sub-title">Welcome To</div>
+                    <h1>Zensolar</h1>
+                    <p>Switch to Solar & Unwind thepower of eco-friendly and consteffective source of energy.</p>
+                </div>
+            </div>
+            <div class="fxt-bg-color">
+                <div class="fxt-header">
+                    <a href="/" class="fxt-logo"><img src="img/zensolar-logo.svg" alt="Logo"></a>
+                    <p>Save Environment & Save Electricity Bills</p>
+                    <div class="fxt-page-switcher">
+                        <a href="/" class="switcher-text switcher-text1">Home</a>
+                        <a href="/quotation" class="switcher-text switcher-text2 active">Quotation</a>
+                        <!-- <a href="/Contact" class="switcher-text switcher-text2">Contact</a> -->
+                    </div>
+                </div>
+                <div class="fxt-form">
+                    <div class="fxt-heading">
+                        <span class="head-title">Download PDF</span>
+                        <span>Get Your PDF Now</span>
+                    </div>
+                    <!-- write the code! -->
+                    <div class="nav-cards">
+                        <a href="<%= fileUrl %>" download>
+                            <div id="downloadPdf" class="nav-card">
+                                <img src="img/download-icon.svg" width="50" height="50" alt="">
+                                <span>Download</span>
+                            </div>
+                        </a>
+
+                        <form hidden action="/remove-file" method="post">
+                            <input type="text" name="filename" value="<%= filename %>" hidden>
+                            <button id="nav-submit" type="submit"></button>
+                        </form>
+
+                        <!-- <a href="/quotation">
+                            <div class="nav-card">
+                                <img src="img/quotation.svg" width="50" height="50" alt="">
+                                <span>Get Quotation</span>
+                            </div>
+                        </a> -->
+                    </div>
+
+                    <div class="fxt-sub-heading">
+                        <span class="sub-head-title">Contact Details</span>
+                    </div>
+
+                    <div class="fxt-body-footer">
+                        <!-- contact details -->
+                        <span><b>Contact:</b> <a href="tel:9421601260">+91 9421-601260</a></span>
+                        <span><b>Email:</b> <a
+                                href="mailto:zensolar.enterprises@gmail.com">zensolar.enterprises@gmail.com</a></span>
+                        <span><b>Address:</b> 77, Shaniwar Peth, Near Kamtikar Medical, Painter Chowk, Solapur.</span>
+                    </div>
+
+                    <div class="fxt-footer-solocontent">
+                        <span>Save Electricity Bill | Save Environment | Go Green |Switch to Solar | Help Mother
+                            Nature</span>
+                    </div>
+
+                </div>
+                <div class="fxt-footer">
+                    <ul class="fxt-socials">
+                        <li class="fxt-whatsapp fxt-transformY-50 fxt-transition-delay-5"><a href="https://rb.gy/dsaw6o"
+                                title="Whatsapp"><i class="fab fa-whatsapp"></i></a></li>
+                        <li class="fxt-instagram fxt-transformY-50 fxt-transition-delay-6"><a href="#"
+                                title="twitter"><i class="fab fa-instagram"></i></a></li>
+                        <li class="fxt-google fxt-transformY-50 fxt-transition-delay-7"><a href="#" title="google"><i
+                                    class="fab fa-google-plus-g"></i></a></li>
+                        <li class="fxt-linkedin fxt-transformY-50 fxt-transition-delay-8"><a href="#"
+                                title="linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li class="fxt-pinterest fxt-transformY-50 fxt-transition-delay-9"><a href="#"
+                                title="pinterest"><i class="fab fa-pinterest-p"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jquery-->
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Imagesloaded js -->
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <!-- Validator js -->
+    <script src="js/validator.min.js"></script>
+    <!-- Custom Js -->
+    <script src="js/main.js"></script>
+
+    <script>
+        document.getElementById("downloadPdf").onclick = function () {
+            const navSubmitElement = document.getElementById("nav-submit");
+            navSubmitElement.click();
+        };
+    </script>
+
+</body>
+
+
+<!-- Mirrored from affixtheme.com/html/xmee/demo/login-5.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 May 2024 10:46:35 GMT -->
+
+</html>

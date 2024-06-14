@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 let baseUrl = "http://zensolar.syscloudtech.com";
+// let baseUrl = "http://localhost:2828";
 
 app.get("/", async (req, res) => {
   let priceListUrl = `${baseUrl}/price-list.pdf`;
@@ -114,7 +115,7 @@ app.post("/quotation", async (req, res) => {
     filename = `${name}-${units}Kw.pdf`;
 
     await page.pdf({
-      path: `./downloads/${filename}`,
+      path: `./public/downloads/${filename}`,
     });
 
     await browser.close();
@@ -177,9 +178,9 @@ app.post("/quotation", async (req, res) => {
     console.error("error:", error);
   }
 
-  downloadPdf(req, res, filename);
+  // downloadPdf(req, res, filename);
 
-  // res.redirect('/');
+  res.redirect(`/download-pdf?filename=${filename}`);
 
 });
 
@@ -200,22 +201,23 @@ function generateRandomNumber() {
   return finalStr;
 }
 
-function downloadPdf(req, res, filename) {
+app.get("/download-pdf", async (req, res) => {
+  let filename = await req.query.filename;
+  let fileUrl = `${baseUrl}/downloads/${filename}`;
+  res.render("download_pdf", { filename, fileUrl });
+});
 
-  const filePath = path.join(__dirname, 'downloads', `${filename}`);
-
-  const file = fs.createReadStream(filePath);
-
-  res.setHeader('Content-Type', 'application/pdf'); // Set content type based on file
-  res.setHeader('Content-Disposition', 'attachment; filename=abcd.pdf');
-  
-  file.pipe(res);
-
-  setTimeout(()=>{
-    fs.unlink(filePath);
-  }, 2000);
-
-}
+app.post('/remove-file', async (req, res) => {
+  let { filename } = req.body;
+  let filePath = path.join(__dirname, 'public/downloads', filename);
+  let fileRes = await fs.unlink(filePath, (err) => {
+    if(err) {
+      console.error(err);
+    } else {
+      res.redirect('/');
+    }
+  });
+});
 
 app.get("/quotation-pdf", (req, res) => {
   res.render("quotation_pdf");

@@ -18,7 +18,7 @@ let baseUrl = "http://zensolar.syscloudtech.com";
 // let baseUrl = "http://localhost:2828";
 
 app.get("/", async (req, res) => {
-  let priceListUrl = `${baseUrl}/price-list.pdf`;
+  let priceListUrl = `${baseUrl}/downloads/price-list.pdf`;
   res.render("home", { priceListUrl });
 });
 
